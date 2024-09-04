@@ -11,8 +11,86 @@ namespace HelloDungeon
 {
     internal class Game
     {
+        /// <summary>
+        /// Contains all of the player variables
+        /// </summary>
+        struct Player
+        {
+            // declaring variables in a Player
+            public string name;
+            public float health;
+            public float mana;
+            public string weapon;
+            public string armor;
+            public int gold;
+            public float stamina;
+            public float reputation;
+            public int members;
+            public int manapotion;
+            public int staminapotion;
+            public int healthpotion;
+            public int score;
+
+            //Player Constructor
+            public Player(
+                string name,
+                float health,
+                float mana,
+                string weapon,
+                string armor,
+                int gold,
+                float stamina,
+                float reputation,
+                int members,
+                int manapotion,
+                int staminapotion,
+                int healthpotion,
+                int score)
+            {
+                this.name = name;
+                this.health = health;
+                this.mana = mana;
+                this.weapon = weapon;
+                this.armor = armor;
+                this.gold = gold;
+                this.stamina = stamina;
+                this.reputation = reputation;
+                this.members = members;
+                this.manapotion = manapotion;
+                this.staminapotion = staminapotion;
+                this.healthpotion = healthpotion;
+                this.score = score;
+            }
+
+       
+
+        }
+        /// <summary>
+        /// Prints out the stats of the character who the player is using.
+        /// </summary>
+        static void PrintPlayerStats(Player player)
+        {
+            Console.WriteLine(player.name + " Health: " + player.health);
+            Console.WriteLine(player.name + " Mana: " + player.mana);
+            Console.WriteLine(player.name + " Weapon: " + player.weapon);
+            Console.WriteLine(player.name + " Armor: " + player.armor);
+            Console.WriteLine(player.name + " Gold: " + player.gold);
+            Console.WriteLine(player.name + " Stamina: " + player.stamina);
+            Console.WriteLine(player.name + " Reputation: " + player.reputation);
+            Console.WriteLine(player.name + " Members: " + player.members);
+            Console.WriteLine(player.name + " ManaPotion: " + player.manapotion);
+            Console.WriteLine(player.name + " StaminaPotion: " + player.staminapotion);
+            Console.WriteLine(player.name + " HealthPotion: " + player.healthpotion);
+            Console.WriteLine(player.name + " Score: " + player.score);
+        }
         public void Run()
         {
+            // Declaring the values of all of the player1 varaibles.
+            Player player1 = new Player(name: "Player 1", health: 10.0f, mana: 5.0f, weapon: "", armor: "", gold: 3, stamina: 20.0f, reputation: 0.0f, members: 0, manapotion: 1, staminapotion: 1, healthpotion: 1, score: 0);
+
+            PrintPlayerStats(player1);
+            Console.WriteLine("----------------");
+
             string playername = "Bobilus";
             float playerHealth = 10.0f;
             float enemyHealth = 5.0f; 
@@ -31,26 +109,15 @@ namespace HelloDungeon
             string playerRole = "Warrior";
             string playerRole2 = "Wizard";
             bool isDead = false;
-            
 
+            // Start of the dialogue and the story.
 
             Console.WriteLine("Hello, " + playername);
             Console.WriteLine();
             Console.WriteLine("Welcome to my dungeon!");
             Console.WriteLine();
-            Console.WriteLine("Score: " + playerScore);
-            Console.WriteLine("Health: " + playerHealth);
-            Console.WriteLine("Mana: " + playerMana);
-            Console.WriteLine("Stamina: " + playerStamina);
-            Console.WriteLine("Current Weapon: " + playerWeapon);
-            Console.WriteLine("Mana Potion: " + manaPotion);
-            Console.WriteLine("Stamina Potion: " + staminaPotion);
-            Console.WriteLine("Health Potion: " + healthPotion);
-            Console.WriteLine("Gold: " + playerGold);
-            Console.WriteLine("Reputation: " + playerReputation);
-            Console.WriteLine("Party Members: " + partyMembers);
-            Console.WriteLine();
             int input = GetInput("Are you a warrior or a wizard?", "Warrior", "Wizard");
+            // Player gets to choose their class.
             if (input == 1)
             {
                 playerRole = "Warrior";
@@ -66,7 +133,10 @@ namespace HelloDungeon
             Console.WriteLine("Player role: " + playerRole);
             Console.WriteLine("Player Weapon: " + playerWeapon);
             Console.WriteLine("Player armor: " + playerArmor);
-
+            Console.WriteLine();
+            Console.WriteLine("Ahh a " + playerRole);
+            Console.WriteLine("Maybe you have a chance to survive after all.");
+            Console.WriteLine("Well anyway, good luck I wish you the best. I would love to meet you in person but I don't think that you will get the chance to do so.");
 
 
 
@@ -78,7 +148,7 @@ namespace HelloDungeon
                 Console.WriteLine("Watch where you are going you moron the man yelled");
                 Console.WriteLine("The man shoves you away, you trip on a loose stone and roll your ankle.");
                 playerHealth -= 0.5f;
-                Console.WriteLine("Health: " + playerHealth);
+                Console.WriteLine("Player Health: " + playerHealth);
                  input = GetInput("Do you want to keep looking for a way out or fight back against the other prsioner?", "Keep looking around", "Fight back");
                 if (input == 1)
                 {
@@ -90,6 +160,10 @@ namespace HelloDungeon
                     if (input == 1)
                     {
                         Console.WriteLine("You decide to go left, you eventually reach a set of stairs and decide to go up them.");
+                        Console.WriteLine("At the top of the stairs a fight between soldiers and a troll is taking place.");
+                        Console.WriteLine("A nurse approaches you, I noticed that you were limping, here let me fix your ankle.");
+                        playerHealth += 0.5f;
+                        Console.WriteLine("Player Health: " + playerHealth);
                     }
                     if (input == 2)
                     {
@@ -108,8 +182,9 @@ namespace HelloDungeon
                         Console.WriteLine("You decide that it is best to let the prisoner go.");
                         Console.WriteLine("Thank you sir for leaving me alone.");
                         Console.WriteLine("I made a foolish mistake thank you for forgiving me.");
+                        // The player's reputation increases by 1.
                         playerReputation += 1.0f;
-                        Console.WriteLine("Repuation: " + playerReputation);
+                        Console.WriteLine("Player Repuation: " + playerReputation);
                     }
                     if (input == 2)
                     {
@@ -118,7 +193,7 @@ namespace HelloDungeon
                         enemyHealth -= 4.0f;
                         Console.WriteLine("Enemy has been killed.");
                         playerScore += 1;
-                        Console.WriteLine("Score: " + playerScore);
+                        Console.WriteLine("Player Score: " + playerScore);
                     }
                 }
             }
@@ -137,7 +212,7 @@ namespace HelloDungeon
                     Console.WriteLine("It is good to have you on our side, know that your names will go down as legendary if we are victorious today.");
                     Console.WriteLine("Now follow me, we do not have much time to spare.");
                     playerReputation += 5.0f;
-                    Console.WriteLine("Reputation: " + playerReputation);
+                    Console.WriteLine("Player Reputation: " + playerReputation);
                     Console.WriteLine("You head left going up stairs after traveling in the prison hallways for some time");
                     Console.WriteLine("You arrive in a large ballroom area that has been destroyed by all of the chaos going on");
                     Console.WriteLine("A line of soldiers in silver armor are fighting a large troll in the middle of the room, behind them a woman is tending to a soldier's injuries.");
@@ -168,24 +243,48 @@ namespace HelloDungeon
                             Console.WriteLine("You decide to play dead");
                             Console.WriteLine("The orcs start stabbing the dead soldiers and the soldiers who are on their last breath");
                             Console.WriteLine("Before you can even react you get stabbed in your chest");
+                            Console.WriteLine("It takes all of your strength to not yell");
+                            // The player loses 5.0 health.
                             playerHealth -= 5.0f;
-                            Console.WriteLine("Health: " + playerHealth);
+                            Console.WriteLine("Player Health: " + playerHealth);
                             Console.WriteLine("Eventually the orcs pass by you, heading to the direction that you came from");
                             input = GetInput("Your health is at half, would you like to use a health potion?", "Yes", "No");
                             if (input == 1)
                             {
                                 Console.WriteLine("You chose to use a health potion");
+                                // The player regains 2.5 health.
                                 playerHealth += 2.5f;
-                                Console.WriteLine("Health: " + playerHealth);
+                                healthPotion -= 1;
+                                Console.WriteLine("Player Health: " + playerHealth);
+                                Console.WriteLine("Health potions: " + healthPotion);
+                                Console.WriteLine("The bleeding from your wound has stopped and you gather the strength to stand up.");
+                                Console.WriteLine("You continue to follow the hallway to the left, hundreds of slain soldiers are on the ground as you pass.");
+                                Console.WriteLine("A broken down door at the end of the hallway leads to a cellar.");
+                                Console.WriteLine("The cellar is even darker than the prison cell that you came from.");
                             }
                             if (input == 2)
                             {
                                 Console.WriteLine("You chose to not use a health potion");
+                                Console.WriteLine("The wound is sadly fatal.");
+                                // The player dies.
+                                playerHealth -= 5.0f;
+                                Console.WriteLine("Player Health: " + playerHealth);
+                                Console.WriteLine("You have died.");
+                                input = 0; 
+
+                             
                             }
                         }
                         if (input == 2)
                         {
                             Console.WriteLine("You decide to walk up to the orcs.");
+                            Console.WriteLine("Look at him, he's a prisoner here. What should we do with him boss.");
+                            Console.WriteLine("A bigger orc comes from out the crowd of orcs.");
+                            Console.WriteLine("Well it is clear that he did not want to fight with the knights.");
+                            Console.WriteLine("What is your name?");
+                            Console.WriteLine(playername + " hmm what an interesting name.");
+                            Console.WriteLine("It sounds rather familiar.");
+                            Console.WriteLine("Follow me " + playername + " We are going to take this castle.");
                         }
                     }
                 }
