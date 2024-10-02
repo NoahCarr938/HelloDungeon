@@ -17,13 +17,10 @@ namespace HelloDungeon
         bool gameOver = false;
         string playername = "Bobilus";
         float playerHealth = 10.0f;
-        float enemyHealth = 5.0f;
-        float playerMana = 5.0f;
         string playerWeapon = "";
         string playerArmor = "";
         int playerGold = 3;
         int playerScore = 0;
-        string playerDamage = "";
         string playerRole = "Warrior";
         string playerRole2 = "Wizard";
         bool playerIsAlive = true;
@@ -33,7 +30,6 @@ namespace HelloDungeon
             // declaring variables in a Player
             public string name;
             public float health;
-            public float mana;
             public string weapon;
             public string armor;
             public int gold;
@@ -43,7 +39,6 @@ namespace HelloDungeon
             public Player(
                 string name,
                 float health,
-                float mana,
                 string weapon,
                 string armor,
                 int gold,
@@ -51,7 +46,6 @@ namespace HelloDungeon
             {
                 this.name = name;
                 this.health = health;
-                this.mana = mana;
                 this.weapon = weapon;
                 this.armor = armor;
                 this.gold = gold;
@@ -67,7 +61,6 @@ namespace HelloDungeon
         static void PrintPlayerStats(Player player)
         {
             Console.WriteLine(player.name + " Health: " + player.health);
-            Console.WriteLine(player.name + " Mana: " + player.mana);
             Console.WriteLine(player.name + " Weapon: " + player.weapon);
             Console.WriteLine(player.name + " Armor: " + player.armor);
             Console.WriteLine(player.name + " Gold: " + player.gold);
@@ -76,7 +69,7 @@ namespace HelloDungeon
         public void Run()
         {
             // Declaring the values of all of the player1 varaibles.
-            Player player1 = new Player(name: "Player 1", health: 10.0f, mana: 5.0f, weapon: "", armor: "", gold: 3, score: 0);
+            Player player1 = new Player(name: "Player 1", health: 10.0f, weapon: "", armor: "", gold: 3, score: 0);
 
             PrintPlayerStats(player1);
             Console.WriteLine("----------------");
@@ -256,7 +249,6 @@ namespace HelloDungeon
                     if (playerHealth <= 0)
                     {
                         playerIsAlive = false;
-                        Console.WriteLine("You Have Died");
                         Console.ReadKey();
                         Console.Clear();
                     }
@@ -325,8 +317,6 @@ namespace HelloDungeon
                     playerIsAlive = true;
                     string playername = "Bobilus";
                     float playerHealth = 10.0f;
-                    float enemyHealth = 5.0f;
-                    float playerMana = 5.0f;
                     string playerWeapon = "";
                     string playerArmor = "";
                     int playerGold = 3;
