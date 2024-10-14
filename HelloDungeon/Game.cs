@@ -259,6 +259,7 @@ namespace HelloDungeon
             {
                 Console.WriteLine("I will go and kill the orcs for you humans.");
                 Console.WriteLine("The Dragon scorches the orc army leaving only the humans left standing");
+                Console.Clear();
                 Console.WriteLine("Out of the corner a king approaches you.");
                 Console.WriteLine("Congrats soldier, you have saved our kingdom. I will make you a Lord here and you will have whatever you desire.");
                 playerScore += 100;
@@ -266,6 +267,27 @@ namespace HelloDungeon
             }
             void Room6()
             {
+                // Using the Function Overload
+                int input = GetInput("Now Bobilus, please choose your reward!", "Be Hideo Kojima for a day.", "$8.36.", "George R.R. Martin finishes Game of Thrones and gives it a good ending.");
+                if (input == 1)
+                {
+                    Console.WriteLine("Congrats you have become Hideo Kojima for a day!");
+                    Console.WriteLine("Sadly because of this, Geoff Keighley will now follow you around all day.");
+                    Console.WriteLine("Did you know he was friends with Kojima? He mentions it every 3 minutes.");
+                }
+                else if (input == 2)
+                {
+                    Console.WriteLine("Congrats you have received $8.36.");
+                    Console.WriteLine("Sadly, you forgot to pay taxes!");
+                    Console.WriteLine("You owe the government $128,487!");
+                    Console.WriteLine("Good Luck!");
+                }
+                else if (input == 3)
+                {
+                    Console.WriteLine("George finally finished his books and saved the show before it ended!");
+                    Console.WriteLine("Critics and the audience rate the finale a 10/10!");
+                    Console.WriteLine("World peace and world hunger have been solved due to the ending!");
+                }
                 Console.WriteLine("Congrats! you have completed the game!");
             }
             // Loop while the game is on.
@@ -357,6 +379,54 @@ namespace HelloDungeon
                 {
                     // Set inputReceived to be the second option
                     inputReceived = 2;
+                }
+                // If neither are true
+                else
+                {
+                    // Display error message
+                    Console.WriteLine("Invalid Input");
+                    Console.ReadKey();
+                }
+            }
+            Console.Clear();
+            return inputReceived;
+        }
+        // Function Overload for GetInput
+        int GetInput(string description, string option1, string option2, string option3)
+        {
+            string input = "";
+            int inputReceived = 0;
+
+            // Input Loop with 3 options
+            while (inputReceived != 1 && inputReceived != 2 && inputReceived != 3)
+            {
+                // Print options
+                Console.WriteLine(description);
+                Console.WriteLine("1. " + option1);
+                Console.WriteLine("2. " + option2);
+                Console.WriteLine("3. " + option3);
+                Console.Write("> ");
+
+                // Get input from the player
+                input = Console.ReadLine();
+
+                // If player selected the first option
+                if (input == "1" || input == option1)
+                {
+                    // Set inputReceived to be the first option
+                    inputReceived = 1;
+                }
+                // Otherwise if the player selected the second option
+                else if (input == "2" || input == option2)
+                {
+                    // Set inputReceived to be the second option
+                    inputReceived = 2;
+                }
+                // Otherwise if the player selected the third option
+                else if (input == "3" || input == option3)
+                {
+                    // Set inputReceived to be the third option
+                    inputReceived = 3;
                 }
                 // If neither are true
                 else
